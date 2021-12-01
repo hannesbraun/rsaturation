@@ -3,5 +3,5 @@
 
 <https://hannesbraun.net/ns/lv2/rsaturation>
 	a lv2:Plugin ;
-	lv2:binary <rsaturation@CMAKE_SHARED_LIBRARY_SUFFIX@> ;
+	lv2:binary <RSaturation@CMAKE_SHARED_LIBRARY_SUFFIX@> ;
 	rdfs:seeAlso <rsaturation.ttl> .
