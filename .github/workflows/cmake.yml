@@ -1,0 +1,28 @@
+name: CMake
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - name: Download dependencies
+      run: brew install lv2 sord
+      shell: bash
+    - uses: actions/checkout@v2
+    - name: Configure CMake
+      run: cmake -B ${{github.workspace}}/build
+    - name: Build
+      working-directory: ${{github.workspace}}/build
+      run: make
+    - name: Validate LV2 plugin
+      working-directory: ${{github.workspace}}/build/RSaturation.lv2
+      run: lv2_validate manifest.ttl rsaturation.ttl
